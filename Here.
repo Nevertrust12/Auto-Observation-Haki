@@ -1,0 +1,33 @@
+local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
+local Toggled = false
+
+Mouse.KeyDown:Connect(function(Key)
+    if Key == _G.Keybind then
+        if Toggled then
+            Toggled = false
+        else
+            Toggled = true
+            while Toggled and wait() do
+                local args = {
+                    [1] = "Fighting Style",
+                    [2] = "T",
+                    [3] = CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0),
+                    [4] = workspace.Map.Islands.Marineford.Model.Marineford:FindFirstChild("Marineford platform")
+                        :FindFirstChild("Marineford platform").MeshPart,
+                    [5] = 5
+                }
+                game:GetService("ReplicatedStorage").Remotes.requestAbility:FireServer(unpack(args))
+                wait(_G.observationCD)
+                local args = {
+                    [1] = "Sword Style",
+                    [2] = "T",
+                    [3] = CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0),
+                    [4] = workspace.Map.Islands:FindFirstChild("Starter Island").Model:FindFirstChild("Starter island")
+                        :FindFirstChild("Starter island").Ground,
+                    [5] = 5
+                }
+                game:GetService("ReplicatedStorage").Remotes.requestAbility:FireServer(unpack(args))
+            end
+        end
+    end
+end)
