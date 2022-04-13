@@ -1,0 +1,13 @@
+
+while _G.OnOrNot do
+wait()
+local args = {
+       [1] = "Fighting Style",
+       [2] = "T",
+       [3] = CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0),
+       [4] = workspace.Map.Islands.Marineford.Model.Marineford:FindFirstChild("Marineford platform")
+       :FindFirstChild("Marineford platform").MeshPart,
+       [5] = 5
+}
+game:GetService("ReplicatedStorage").Remotes.requestAbility:FireServer(unpack(args))
+end
